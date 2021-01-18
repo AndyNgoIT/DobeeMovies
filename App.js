@@ -7,7 +7,7 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <Text>Email: </Text>
+        <Text>DobeeMovies </Text>
       </View>
     );
   }
