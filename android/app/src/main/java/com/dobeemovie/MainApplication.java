@@ -49,15 +49,6 @@ public class MainApplication extends Application implements ReactApplication {
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
   }
 
-        @Override
-        protected List<ReactPackage> getPackages() {
-          return Arrays.<ReactPackage>asList(
-           new MainReactPackage(),
-           new LinearGradientPackage(), // <---- and This! 
-           new VectorIconsPackage()
-          );
-        }
-
   /**
    * Loads Flipper in React Native templates. Call this in the onCreate method with something like
    * initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
