@@ -46,12 +46,22 @@ const BottomNav = createBottomTabNavigator({
       tabBarIcon: ({ tintColor }) => {
         const { routeName } = navigation.state;
         let iconName;
-        if (routeName === 'HomeStack') {
-          iconName = 'home';
-        } else if (routeName === 'Playlist') {
-          iconName = 'th-list';
-        } else if (routeName === 'Profile') {
-            iconName ='user-circle';
+        switch (routeName) {
+            case 'HomeStack': {
+                iconName = 'home';
+                break;
+            }
+            case 'Playlist': {
+                iconName = 'th-list';
+                break;
+            }
+            case 'Profile': {
+                iconName = 'user-circle';
+                break;
+            }
+            default: {
+                iconName = 'heart';
+            }
         }
         return <FontAwesome5 name={iconName} size={20} color={tintColor} />;
       },
