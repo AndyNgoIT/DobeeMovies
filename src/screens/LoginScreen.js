@@ -8,14 +8,13 @@ import {
     StyleSheet, 
     TextInput
 } from 'react-native'
-import { BorderlessButton } from 'react-native-gesture-handler';
 import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class LoginScreen extends Component {
     render() {
         return (
-            <SafeAreaView style= {{flex: 1}} >
+            <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}} >
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
                    <View style = {{flex: 1, justifyContent: 'center', paddingHorizontal: 21}}>
                       <View style={Style.container}>
@@ -29,7 +28,7 @@ export default class LoginScreen extends Component {
                       <View style={{marginTop: 21, marginBottom: 10,}}>
                         <Text>Email </Text>
                         <TextInput 
-                          placeholder="dobeeteam@nbdong.com"
+                          placeholder="example@gmail.com"
                           keyboardType="email-address"
                           style={{ 
                             borderBottomColor: '#707070',
@@ -49,7 +48,7 @@ export default class LoginScreen extends Component {
                            borderBottomWidth: 2,
                            paddingHorizontal: 5,
                            paddingVertical: 8,
-                           fontSize: 16,
+                           //fontSize: 16,
                           }} />
                       </View>
 
@@ -66,7 +65,7 @@ export default class LoginScreen extends Component {
                       </TouchableOpacity>
 
                       <View style={{alignContent: 'center', marginTop: 180, marginBottom: -30,}}>
-                           <Text style={{textAlign: 'center'}}>
+                           <Text style={{textAlign: 'center', alignItems: 'center'}}>
                                Bạn chưa có tài khoản?
                                <TouchableOpacity>
                                  <Text style={{color: '#3391f5'}}> Đăng Ký Ngay</Text>
