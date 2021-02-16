@@ -28,7 +28,7 @@ export default class HomeScreen extends Component {
                         renderItem={ ({ item }) => {
                             return (
                                <TouchableOpacity 
-                                  onPress = {() => this.props.navigation.navigate('DetailScreen')}
+                                  onPress = {() => this.props.navigation.navigate('DetailScreen', item)}
                                   style={{marginRight: 18}}>
                                    <View style={{flex: 1,}}>
                                        <FastImage 
@@ -74,7 +74,7 @@ export default class HomeScreen extends Component {
                          renderItem={ ({ item }) => {
                             return (
                                <TouchableOpacity 
-                                  onPress = {() => this.props.navigation.navigate('DetailScreen')}
+                                  onPress = {() => this.props.navigation.navigate('DetailScreen', item)}
                                   style={{marginBottom: 10,}}>
                                    <View style={{flexDirection: 'row'}}>
                                        <FastImage 
@@ -87,7 +87,7 @@ export default class HomeScreen extends Component {
                                                 borderRadius: 5,
                                                 marginRight: 10,
                                             }}
-                                            resizeMode= 'cover'
+                                            //resizeMode= 'cover'
                                             />
                                         <View style={{flex: 1, flexDirection: 'column'}}>
                                          <Text style={{

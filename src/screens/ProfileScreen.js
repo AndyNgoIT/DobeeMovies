@@ -16,12 +16,8 @@ export default class ProfileScreen extends Component {
                         </View>
 
                         <View style={[styles.textStyle, {alignItems: 'center', marginBottom: 20}]}>
-                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>A.D Đông Ngô 
-                            <FastImage  source={ require('../assets/images/tich-xanh.webp')} 
-                            style={{width: 18, height: 18, marginLeft: 15,}} />
-                          </Text>
-                          
-                          <Text>dobeeteam@nbdong.com</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>Đông Ngô </Text>
+                          <Text>dobeeteam@gmail.com</Text>
                         </View>
 
                         <TouchableOpacity 
@@ -37,11 +33,13 @@ export default class ProfileScreen extends Component {
                         </TouchableOpacity>
        
                         <View style={{alignItems: 'center', marginTop: 180}}>
-                          <TouchableOpacity>
+                          <TouchableOpacity onPress = {() => this.props.navigation.navigate('InforappScreen')}>
                              <Text style= {{color: '#7f7f7f'}}>Thông tin về ứng dụng</Text>
                           </TouchableOpacity>
 
-                          <TouchableOpacity style={{marginTop: 10}}>
+                          <TouchableOpacity 
+                           style={{marginTop: 10}}
+                           >
                              <Text style= {{color: '#7f7f7f'}}>Báo lỗi / Yêu cầu tính năng</Text>
                           </TouchableOpacity>
                         </View>
