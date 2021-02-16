@@ -8,6 +8,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import LoginScreen from './screens/LoginScreen';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import InforappScreen from './screens/InforappScreen';
 
 const HomeStack = createStackNavigator(
     {
@@ -16,9 +17,25 @@ const HomeStack = createStackNavigator(
     }, 
    {
      defaultNavigationOptions: {
-       headerShown: false,
+       headerShown: true,
+       headerTitle: false,
+       headerTransparent: true,
      },
    }
+);
+
+const AuthorStack = createStackNavigator(
+    {
+        ProfileScreen: ProfileScreen,
+        InforappScreen: InforappScreen,
+    },
+    {
+        defaultNavigationOptions: {
+           headerShown: true,
+            headerTitle: false, 
+            headerTransparent: true,
+        },    
+    },
 );
 
 const BottomNav = createBottomTabNavigator({
@@ -35,7 +52,7 @@ const BottomNav = createBottomTabNavigator({
         }
      },
      Profile: {
-        screen: ProfileScreen,
+        screen: AuthorStack,
         navigationOptions: {
             tabBarLabel: 'Cá Nhân',
         }
@@ -81,6 +98,7 @@ const BottomNav = createBottomTabNavigator({
 const SwitchNav = createSwitchNavigator({
     DashBoard: BottomNav,
     LoginScreen: LoginScreen,
+    InforappScreen: AuthorStack
 })
 
 const MainContainer = createAppContainer(SwitchNav);
