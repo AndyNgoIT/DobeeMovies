@@ -18,9 +18,14 @@ export default class HomeScreen extends Component {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                 <ScrollView>  
-                  <HeaderComponent/>
+                  <HeaderComponent 
+                    title = {'Trang Chính'} 
+                    fontWeight={'bold'} 
+                    fontSize={24} 
+                    color={'#001f45'}  />
+
                   <View>
-                      <FlatList   
+                    <FlatList   
                         horizontal = {true} 
                         style={{marginLeft: 21}}
                         data={moviesData.results}
@@ -57,7 +62,7 @@ export default class HomeScreen extends Component {
                                </TouchableOpacity>
                             );
                         }}
-                      />
+                    /> 
                     </View>
                     
                     <View style={{flex: 1, marginHorizontal: 21}}>
@@ -112,7 +117,7 @@ export default class HomeScreen extends Component {
                                     </View> 
                                </TouchableOpacity>
                             );
-                        }} />
+                        }} /> 
                     </View>  
                 </ScrollView>    
             </SafeAreaView>

@@ -13,6 +13,7 @@ import {
 import FastImage from 'react-native-fast-image';
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import LinearGradient from 'react-native-linear-gradient';
+import { HeaderComponent, MoviesComponent } from '../components';
 
 export default class DetailScreen extends Component {
     render() {
@@ -20,23 +21,19 @@ export default class DetailScreen extends Component {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                 <ScrollView>
-                    <View style={{paddingVertical: 12,}}>
-                       <Text 
-                       style={{
-                           fontWeight: 'bold', 
-                           fontSize: 28, 
-                           color: '#001f45',
-                           textAlign: 'center',
-                           }}>Chi Tiết</Text>
-                    </View>
+                    <HeaderComponent title = {'Chi Tiết'} 
+                        fontWeight={'bold'} 
+                        fontSize={24} 
+                        color={'#001f45'}
+                        textAlign={'center'} />
 
-                    <View style={{marginHorizontal: 21,}}>
-                        <View>
+                    <View style={{marginHorizontal: 21}}>
+                        <View style={{marginLeft: 21}}>
                             <FastImage 
                                 source= {{
                                     uri: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.backdrop_path}`,
                                 }}
-                            style = {{width: 300, height: 304,  borderRadius: 6, }} 
+                            style = {{width: 300, height: 305,  borderRadius: 6, }} 
                             resizeMode = 'cover'
                             />
                         </View>
@@ -59,7 +56,7 @@ export default class DetailScreen extends Component {
 
                             <View style = {{flex: 1, flexDirection: 'row', paddingVertical: 10}}>
                                 <TouchableOpacity 
-                                    onPress = {() => Alert.alert('Bạn đã thích bộ phim này!')}
+                                    onPress = {() => Alert.alert('COMING_SOON')}
                                     style={{
                                         marginRight: 20,
                                     }}
@@ -79,11 +76,17 @@ export default class DetailScreen extends Component {
                                     <FontAwesome5 name="share" size={30} color= '#001f45' />
                                 </TouchableOpacity>
 
-                                <TouchableOpacity style={Style.linearGradient}>
-                                        <Text style= {[Style.buttonText]}>
-                                            <FontAwesome5 name="play" size={20} color='#fff' marginRight= {60}/>
-                                            Xem Trailer
-                                        </Text>  
+                                <TouchableOpacity onPress = {() => Alert.alert('COMING_SOON','TINH_NANG_DANG_PHAT_TRIEN')}>
+                                    <LinearGradient 
+                                    start={{x: 0, y: 0}} 
+                                    end={{x: 1, y: 0}}
+                                    colors={['#001F45', '#45003D']} 
+                                    style={Style.linearGradient}>
+                                    <Text style= {[Style.buttonText]}>
+                                        <FontAwesome5 name="play" size={15} color='#fff' />
+                                        Xem Trailer
+                                    </Text>  
+                                    </LinearGradient>
                                 </TouchableOpacity>
                             </View>
 
@@ -117,7 +120,7 @@ export default class DetailScreen extends Component {
 
                             <View>
                                 <TextInput 
-                                    placeholder= "bình luận"
+                                    placeholder= "Viết ở đây....."
                                     maxLength = {99999}
                                     style = {{
                                         paddingVertical: 8,
@@ -131,7 +134,7 @@ export default class DetailScreen extends Component {
                                     }}
                                 />
                                 <TouchableOpacity style = {{
-                                    marginVertical: 10,
+                                    marginVertical: 14,
                                     backgroundColor: '#dcdcdc',
                                     width: 208,
                                     borderRadius: 20,
@@ -143,7 +146,8 @@ export default class DetailScreen extends Component {
                                         textAlign: 'center', 
                                         fontWeight: 'bold',
                                         fontStyle: 'normal',
-                                        fontSize: 15
+                                        fontSize: 20,
+                                        color: '#333'
                                         }}>Bình Luận</Text>
                                 </TouchableOpacity>
                             </View>
@@ -159,7 +163,12 @@ export default class DetailScreen extends Component {
                                 fontWeight: 'bold',
                                 fontSize: 22,
                             }}>Liên Quan</Text>  
-                        <Text>COMING_SOON</Text>
+                        <MoviesComponent 
+                         width={100} 
+                         height={150} 
+                         borderRadius={5} 
+                         marginRight={10}
+                         marginBottom={10} />
                     </View>
 
                 </ScrollView>
@@ -170,11 +179,11 @@ export default class DetailScreen extends Component {
 
 const Style = StyleSheet.create({
     linearGradient: {
-        borderRadius: 15,
-        paddingVertical: 10,
+        borderRadius: 35,
+        paddingVertical: 8,
         paddingHorizontal: 10,
         width: 190,
-        backgroundColor: '#31a3f5',
+        backgroundColor: '#001f45',
         marginLeft: 20,
      },
     buttonText: {
@@ -183,6 +192,7 @@ const Style = StyleSheet.create({
         color: '#fff',
         textAlign: 'center',
         padding: 5,
+        letterSpacing: 1,
       },
     detailInfor: {
         fontStyle: 'normal',

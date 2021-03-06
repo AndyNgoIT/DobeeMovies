@@ -8,20 +8,17 @@ import {
 import FastImage from 'react-native-fast-image';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
-
+import { HeaderComponent } from '../components';
 
 export default class InforappScreen extends Component {
     render() {
         return (
             <SafeAreaView style={{color: '#ebeef0'}}>
-                <View style={{paddingVertical: 12, marginLeft: 21, }}>
-                    <Text style={{
-                        fontWeight: 'bold', 
-                        fontSize: 24, 
-                        color: '#001f45',
-                        textAlign: 'center',
-                        }}>Thông tin về Ứng dụng</Text>
-                </View>
+                <HeaderComponent title={'Thông tin về Ứng dụng'}
+                    fontWeight= {'bold'}
+                    fontSize={24}
+                    color={'#001f45'}
+                    textAlign={'center'} />
 
                 <View style = {{marginTop: 15, marginHorizontal: 21,}}>
                     <Text style={{color: '#7f7f7f'}}>Tác giả</Text>
@@ -68,7 +65,7 @@ export default class InforappScreen extends Component {
                         color: '#001f45',
                         marginTop: 30,
                         marginHorizontal: 10,
-                        }} >VERSION: 1.0.0</Text>
+                        }} >VERSION: 0.0.1</Text>
                 </View>
             </SafeAreaView>
         )
