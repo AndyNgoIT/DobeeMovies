@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
                   <HeaderComponent 
                     title = {'Trang Chính'} 
                     fontWeight={'bold'} 
-                    fontSize={24} 
+                    fontSize={28} 
                     color={'#001f45'}  />
 
                   <View>
@@ -48,11 +48,12 @@ export default class HomeScreen extends Component {
                                             resizeMode= 'cover'
                                             />
                                        <Text style={{
-                                           fontSize: 12, 
+                                           fontSize: 15,
+                                           maxWidth: 165, 
                                            fontFamily: 'san-serif', 
                                            fontWeight: 'bold',
                                            marginTop: 10,
-                                           }}>{item.title || item.name}</Text>
+                                           }}>{item.title}</Text>
                         
                                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                            <Text style={{color: '#FFA44D', fontSize: 12}}>{item.vote_average}/10</Text>
@@ -71,7 +72,7 @@ export default class HomeScreen extends Component {
                             fontFamily: 'san-serif', 
                             color: '#001F45',
                             fontWeight: 'bold',
-                            fontSize: 20,
+                            fontSize: 24,
                             }}>Thịnh Hành</Text>
                         <FlatList   
                          data={moviesData.results}
@@ -99,7 +100,7 @@ export default class HomeScreen extends Component {
                                            fontSize: 14, 
                                            fontFamily: 'san-serif', 
                                            fontWeight: 'bold',
-                                           }}>{item.title || item.name}</Text>
+                                           }}>{item.title}</Text>
                                            
                                          <Text style={{
                                            fontSize: 12,  

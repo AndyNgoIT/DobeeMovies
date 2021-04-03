@@ -31,7 +31,7 @@ export default class DetailScreen extends Component {
                         <View style={{marginLeft: 21}}>
                             <FastImage 
                                 source= {{
-                                    uri: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.backdrop_path}`,
+                                    uri: `https://www.themoviedb.org/t/p/w220_and_h330_face/${movie.poster_path}`,
                                 }}
                             style = {{width: 300, height: 305,  borderRadius: 6, }} 
                             resizeMode = 'cover'
@@ -97,8 +97,6 @@ export default class DetailScreen extends Component {
                                 lineHeight: 24,
                                 marginBottom: 15
                             }}>Nội Dung Phim:  {movie.overview}</Text>
-
-                            <Text style={[Style.detailInfor]}>Ngôn Ngữ: {movie.original_language}</Text>
                             <Text style={[Style.detailInfor]}>Cung cấp bới: themoviedb.org</Text>
                     
                         </View>
@@ -161,11 +159,13 @@ export default class DetailScreen extends Component {
                                 fontFamily: 'san-serif', 
                                 color: '#001F45',
                                 fontWeight: 'bold',
-                                fontSize: 22,
+                                fontSize: 24,
                             }}>Liên Quan</Text>  
                         <MoviesComponent 
-                         width={100} 
-                         height={150} 
+                         horizontal={true}
+                         pressItem = {() => Alert.alert('Phim: ', `${movie.title}`,)}
+                         maxWidth={160} 
+                         height={200} 
                          borderRadius={5} 
                          marginRight={10}
                          marginBottom={10} />

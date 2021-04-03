@@ -5,16 +5,19 @@ import {
     FlatList,
     TouchableOpacity, 
     Alert,
+    CheckBox,
     } from 'react-native';
 import FastImage from 'react-native-fast-image';
+import { TextInput } from 'react-native-gesture-handler';
 import moviesData from "../assets/data.json";
 
 export default class MoviesComponent extends Component {
     render() {
+        const { horizontal } = this.props;
         return (
             <View>
                 <FlatList   
-                  horizontal
+                  horizontal = {horizontal}
                   data={moviesData.results}
                   keyExtractor={(item, index) => index.toString()} 
                   renderItem={ ({ item }) => this.renderItem(item)}/> 
@@ -23,22 +26,22 @@ export default class MoviesComponent extends Component {
     }
 
     renderItem(item) {
-        const {width, height, marginHorizontal, marginBottom, borderRadius, marginRight } = this.props;
+        const {height, marginHorizontal, maxWidth, marginBottom, borderRadius, marginRight, pressItem, flexDirection } = this.props;
         return (
             <TouchableOpacity 
-               onPress = {() => Alert.alert('PHIM: ', item.title || item.name)}
+               onPress = {() => pressItem()}
                style={{marginBottom: 10,}}>
-                <View style={{ marginHorizontal, }}>
+                <View style={{ marginHorizontal, flexDirection}}>
                     <FastImage 
                       source={{
                          uri: `https://www.themoviedb.org/t/p/w220_and_h330_face/${item.poster_path}`,
                          }}
                          style={{
-                             width,
+                             maxWidth,
                              height,
                              borderRadius,
                              marginRight,
-                             marginBottom
+                             marginBottom,
                          }}
                          resizeMode= 'cover'
                          />
@@ -47,11 +50,16 @@ export default class MoviesComponent extends Component {
                          marginBottom,
                          marginRight,
                          fontSize: 14, 
+                         maxWidth,
                          fontFamily: 'san-serif', 
                          fontWeight: 'bold',
-                         }}>{item.title || item.name}</Text>
-                </View>
-              </View> 
+                         }}>{item.title}</Text>
+
+                        <Text style={{
+                            fontSize: 12, 
+                            fontWeight: 'bold'}} >Lượt xem: {item.popularity}</Text> 
+                     </View>
+                </View> 
             </TouchableOpacity>
         );
     }
