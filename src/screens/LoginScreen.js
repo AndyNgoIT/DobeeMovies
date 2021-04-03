@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { 
     Text,
     SafeAreaView, 
@@ -11,7 +11,7 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 
 
-export default class LoginScreen extends Component {
+export default class LoginScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}} >

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
     SafeAreaView,
     Text,
@@ -11,7 +11,7 @@ import FastImage from 'react-native-fast-image';
 import { connect } from 'react-redux';
 import { HeaderComponent, MoviesComponent } from '../components';
 
-class PlaylistItem extends Component {
+class PlaylistItem extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>

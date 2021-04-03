@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, SafeAreaView, View, Image, TouchableOpacity, ScrollView, StyleSheet} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 
-export default class ProfileScreen extends Component {
+export default class ProfileScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>

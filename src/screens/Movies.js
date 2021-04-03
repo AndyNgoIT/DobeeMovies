@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View,
@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux'
 import { HeaderComponent, MoviesComponent } from '../components';
 import { addMovie } from '../../redux/action';
 
-class Movies extends Component {
+class Movies extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View,
@@ -10,7 +10,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
 import { HeaderComponent } from '../components';
 
-export default class InforappScreen extends Component {
+export default class InforappScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{color: '#ebeef0'}}>

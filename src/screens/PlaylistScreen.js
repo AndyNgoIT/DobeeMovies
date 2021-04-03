@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View, 
@@ -10,7 +10,7 @@ import {
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { HeaderComponent, MoviesComponent } from '../components';
 
-export default class PlaylistScreen extends Component {
+export default class PlaylistScreen extends PureComponent {
 
     render() {
         return (

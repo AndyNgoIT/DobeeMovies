@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { Text, View } from 'react-native';
 
 
-export default class HeaderComponent extends Component {
+export default class HeaderComponent extends PureComponent {
     render () {
         const { title, fontWeight, fontSize, color, textAlign } = this.props;
         return (

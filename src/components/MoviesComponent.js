@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View,
@@ -11,7 +11,7 @@ import FastImage from 'react-native-fast-image';
 import { TextInput } from 'react-native-gesture-handler';
 import moviesData from "../assets/data.json";
 
-export default class MoviesComponent extends Component {
+export default class MoviesComponent extends PureComponent {
     render() {
         const { horizontal } = this.props;
         return (

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View, 
@@ -15,7 +15,7 @@ import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import LinearGradient from 'react-native-linear-gradient';
 import { HeaderComponent, MoviesComponent } from '../components';
 
-export default class DetailScreen extends Component {
+export default class DetailScreen extends PureComponent {
     render() {
         let movie = this.props.navigation.state.params;
         return (

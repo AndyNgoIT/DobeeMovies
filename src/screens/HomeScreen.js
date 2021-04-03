@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View, 
@@ -13,7 +13,7 @@ import FastImage from 'react-native-fast-image';
 import moviesData from "../assets/data.json";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
-export default class HomeScreen extends Component {
+export default class HomeScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
