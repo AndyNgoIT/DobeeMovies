@@ -8,7 +8,7 @@ const initPlaylist = {
 
 const movieReducer = (state = initPlaylist, action) => {
   switch (action.type) {
-    case 'add_movie': {
+    case 'add_movie': 
       const {current} = state;
       const tempData = current;
       const findIndex = current.findIndex(
@@ -23,7 +23,7 @@ const movieReducer = (state = initPlaylist, action) => {
         ...state,
         current: tempData,
       };
-    }
+    
     default:
       return state;
   }
