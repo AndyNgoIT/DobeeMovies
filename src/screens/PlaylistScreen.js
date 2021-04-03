@@ -14,14 +14,14 @@ export default class PlaylistScreen extends Component {
 
     render() {
         return (
-            <SafeAreaView style={{backgroundColor: '#fff', flex: 1, marginHorizontal: 21}}>
+            <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                 <ScrollView>
                    <HeaderComponent title = {'Danh Sách Phát'} 
                         fontWeight={'bold'} 
                         fontSize={28} 
                         color={'#001f45'} />
 
-                   <View style = {{flexDirection: 'row'}}>
+                   <View style = {{flexDirection: 'row', marginHorizontal: 21}}>
                        <TouchableOpacity style = {{flexDirection: 'row', marginVertical: 12 }}
                            onPress= {() => this.props.navigation.navigate('Movies')} >
                             <FontAwesome5 name="plus" size={24} color='#357ef2' />
@@ -37,13 +37,13 @@ export default class PlaylistScreen extends Component {
 
                    </View>
 
-                   <View style={{marginVertical: 12, }}>
+                   <View style={{marginVertical: 12, marginHorizontal: 21}}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('PlaylistItem')}>
                             
                             <Text style={{
                                 fontSize: 14,
                                 fontWeight: 'bold',
-                            }}>Danh Sách Phát 1</Text>
+                            }}>Danh Sách 1</Text>
                         </TouchableOpacity>
                    </View>
                 </ScrollView>

@@ -22,7 +22,7 @@ class Movies extends Component {
 
     render() {
         return (
-            <SafeAreaView>
+            <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                 <ScrollView>
                     <HeaderComponent title = {'Thêm Phim'} 
                         fontWeight={'bold'} 
@@ -61,12 +61,19 @@ class Movies extends Component {
                     </View>
     
                   {
-                      this.props.movies.all_movies.map( (movie, index) => (
-                          <Button 
-                            key = {movie}
-                            title = {`Add ${movie}`}
-                            onPress={() => this.props.addMovie(index)}
-                          />
+                      this.props.movies.all_movies.map((movie, index) => (
+                         <MoviesComponent 
+                            flexDirection={'row'}
+                            horizontal={false}
+                            marginBottom={10}
+                            marginRight={30}
+                            maxWidth={180}
+                            height={40}
+                            pressItem={() => {
+                                this.props.addMovie(index)
+                                this.setState({ count: this.state.count + 1})
+                            }}
+                         />
                       ))
                   }
                 
@@ -81,7 +88,7 @@ const mapStateToProps = (state) => {
     return { movies }
 }
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch => (
     bindActionCreators({
         addMovie,
     }, dispatch)

@@ -1,10 +1,10 @@
-import { combineReducers } from 'redux'
+import { combineReducers } from 'redux';
+import moviesData from '../src/assets/data.json';
 
 const initPlaylist = {
     current: [],
     all_movies: [
-        'Harry Potter',
-        'The Father',
+       ...moviesData.results
     ]
 }
 
@@ -13,7 +13,7 @@ const movieReducer = (state = initPlaylist, action) => {
         case 'add_movie': 
             const { current, all_movies } = state
 
-            const addedMovie = all_movies.splice(action.payload, 1)
+            const addedMovie = all_movies.shift(action.payload)
 
             current.push(addedMovie)
 
