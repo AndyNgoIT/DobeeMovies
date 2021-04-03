@@ -70,7 +70,7 @@ class Movies extends Component {
                             maxWidth={180}
                             height={40}
                             pressItem={() => {
-                                this.props.addMovie(index)
+                                this.props.addMovie({movie})
                                 this.setState({ count: this.state.count + 1})
                             }}
                          />

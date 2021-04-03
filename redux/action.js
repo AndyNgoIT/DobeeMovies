@@ -1,6 +1,8 @@
-export const addMovie = movieIndex => (
+export const addMovie = movie => (
     {
         type: 'add_movie',
-        payload: movieIndex,
+        payload: {
+            movie
+        },
     }
 )
