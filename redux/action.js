@@ -6,3 +6,12 @@ export const addMovie = movie => (
         },
     }
 )
+
+export const removeMovie = movie => (
+    {
+        type: 'remove_movie',
+        payload: {
+            movie
+        },
+    }
+)

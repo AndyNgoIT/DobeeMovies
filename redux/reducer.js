@@ -19,11 +19,22 @@ const movieReducer = (state = initPlaylist, action) => {
       }
 
       tempData.push(action.payload);
+      
       return {
         ...state,
         current: tempData,
       };
-    
+
+    case 'remove_movie':
+      const movieremove = state.current.filter( (item) => item.id === action.payload.id) 
+
+      movieremove.splice(action.payload, 1)
+
+      return {
+        ...state,
+        current: movieremove
+      }
+      
     default:
       return state;
   }
