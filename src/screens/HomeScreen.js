@@ -34,7 +34,7 @@ export default class HomeScreen extends PureComponent {
                             return (
                                <TouchableOpacity 
                                   onPress = {() => this.props.navigation.navigate('DetailScreen', item)}
-                                  style={{marginRight: 18}}>
+                                  style={{marginRight: 15}}>
                                    <View style={{flex: 1,}}>
                                        <FastImage 
                                         source={{
@@ -105,7 +105,7 @@ export default class HomeScreen extends PureComponent {
                                          <Text style={{
                                            fontSize: 12,  
                                            fontWeight: 'bold',
-                                           marginVertical: 8,
+                                           marginVertical: 5,
                                            }}>Ngày sản xuất: {item.release_date || item.first_air_date}</Text>
 
                                          <Text numberOfLines={2} style={{

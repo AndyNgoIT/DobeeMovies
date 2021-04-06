@@ -1,5 +1,12 @@
 import React, { PureComponent } from 'react';
-import { Text, SafeAreaView, View, Image, TouchableOpacity, ScrollView, StyleSheet} from 'react-native';
+import { Text,
+      SafeAreaView,
+      View,
+      Image,
+      TouchableOpacity,
+      ScrollView,
+      StyleSheet,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
 
@@ -17,7 +24,7 @@ export default class ProfileScreen extends PureComponent {
 
                         <View style={[styles.textStyle, {alignItems: 'center', marginBottom: 20}]}>
                           <Text style={{fontWeight: 'bold', fontSize: 25,}}>Đông Ngô </Text>
-                          <Text>dobeeteam@gmail.com</Text>
+                          <Text>dobeeteam@nbdong.com</Text>
                         </View>
 
                         <TouchableOpacity 

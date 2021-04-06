@@ -31,19 +31,19 @@ export default class PlaylistScreen extends PureComponent {
                        </TouchableOpacity>
 
 
-                       <TouchableOpacity style = {{marginLeft: 85, marginVertical: 12}} >
+                       <TouchableOpacity style = {{marginLeft: 120, marginVertical: 12}} >
                            <FontAwesome5 name="sort-alpha-down" size={28} color='#333' />
                        </TouchableOpacity>
 
                    </View>
 
-                   <View style={{marginVertical: 12, marginHorizontal: 21}}>
+                   <View style={{marginVertical: 15, marginHorizontal: 24}}>
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('PlaylistItem')}>
                             
                             <Text style={{
-                                fontSize: 14,
+                                fontSize: 17,
                                 fontWeight: 'bold',
-                            }}>Danh Sách 1</Text>
+                            }}>Danh Sách Phát 1</Text>
                         </TouchableOpacity>
                    </View>
                 </ScrollView>

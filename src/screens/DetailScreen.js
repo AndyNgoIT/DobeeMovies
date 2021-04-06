@@ -56,12 +56,12 @@ export default class DetailScreen extends PureComponent {
 
                             <View style = {{flex: 1, flexDirection: 'row', paddingVertical: 10}}>
                                 <TouchableOpacity 
-                                    onPress = {() => Alert.alert('COMING_SOON')}
+                                    onPress = {() => Alert.alert('Bạn đã thích bộ phim này ^^')}
                                     style={{
                                         marginRight: 20,
                                     }}
                                 >
-                                    <FontAwesome5 name="heart" size={30}  color= '#001f45' />
+                                    <FontAwesome5 name="heart" size={30}  color= '#001f45'/>
                                 </TouchableOpacity>
 
                                 <TouchableOpacity style={{
