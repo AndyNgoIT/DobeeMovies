@@ -2,6 +2,8 @@
 
 <lable>Author: <a href="http://fb.com/dn279"> ANDY NGÔ</a></lable>
 
+<lable>Mentor: <a href = "http://github.com/sybertooth4945">Minh Nguyen</a></lable>
+
 - Assignment application programming - HOU
 
 

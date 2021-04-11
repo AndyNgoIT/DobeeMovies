@@ -1,31 +1,47 @@
-import React, { PureComponent } from 'react'
-import { 
-    Text,
-    SafeAreaView, 
-    TouchableOpacity, 
-    View,
-    ScrollView,
-    StyleSheet, 
-    TextInput
-} from 'react-native'
+import axios from 'axios';
+import React, { PureComponent } from 'react';
+import {
+        SafeAreaView,
+        ScrollView,
+        Text,
+        View,
+        StyleSheet,
+        TextInput,
+        TouchableOpacity
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
+export default class RegisterScreen extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '',
+            email: '',
+            password: ''
+        }
+    }
 
-export default class LoginScreen extends PureComponent {
     render() {
         return (
-            <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}} >
+            <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}}>
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                   <View style = {{flex: 1, justifyContent: 'center', paddingHorizontal: 21}}>
-                      <View style={Style.container}>
-                           <Text style={Style.logo}>DOBEE MOVIES</Text>
+                    <View style= {{alignItems: 'center'}}>
+                        <Text style={[Style.logo]}>Đăng Ký Thành Viên</Text>
+                        <Text style={[Style.logoSub, {marginVertical: 30}]}>Cùng nhau tham gia cộng đồng DobeeTeam !</Text>
+                    </View>  
+                    <View style={{marginTop: 21, marginBottom: 10, marginHorizontal: 21}}>
+                        <Text>Tên Của Bạn </Text>
+                        <TextInput 
+                          placeholder="VD. Ngo Van A"
+                          keyboardType=""
+                          style={{ 
+                            borderBottomColor: '#707070',
+                            borderBottomWidth: 2,
+                            paddingHorizontal: 5,
+                            paddingVertical: 8,
+                          }}/>
                       </View>
-
-                      <View style= {{alignItems: 'center'}}>
-                         <Text style={[Style.logoSub, {marginTop: 30}]}>Đăng Nhập</Text>
-                      </View>  
-
-                      <View style={{marginTop: 21, marginBottom: 10,}}>
+                    <View style={{marginTop: 21, marginBottom: 10, marginHorizontal: 21}}>
                         <Text>Email </Text>
                         <TextInput 
                           placeholder="example@gmail.com"
@@ -38,7 +54,7 @@ export default class LoginScreen extends PureComponent {
                           }}/>
                       </View>
 
-                      <View style={{marginBottom: 21, marginTop: 10,}}>
+                      <View style={{marginBottom: 21, marginTop: 10, marginHorizontal: 21}}>
                         <Text>Mật Khẩu</Text>
                         <TextInput 
                          placeholder="password"
@@ -53,29 +69,18 @@ export default class LoginScreen extends PureComponent {
                       </View>
 
                       <TouchableOpacity 
-                         onPress = { () => this.props.navigation.navigate('DashBoard')}
                          style={{alignItems: 'center'}}>
                           <LinearGradient 
                              start={{x: 0, y: 0}} 
                              end={{x: 1, y: 0}}
                              colors={['#001F45', '#45003D']} 
                              style={Style.linearGradient}>
-                             <Text style={Style.buttonText}>Đăng Nhập</Text>
+                             <Text style={Style.buttonText}>Đăng Ký</Text>
                           </LinearGradient>
                       </TouchableOpacity>
-
-                      <View style={{alignContent: 'center', marginTop: 180, marginBottom: -30,}}>
-                           <Text style={{textAlign: 'center', alignItems: 'center'}}>
-                               Bạn chưa có tài khoản?
-                               <TouchableOpacity onPress={()=> this.props.navigation.navigate('RegisterScreen')}>
-                                 <Text style={{color: '#3391f5'}}> Đăng Ký Ngay</Text>
-                                </TouchableOpacity>
-                            </Text>
-                        </View>
-                    </View>
-                </ScrollView>  
-            </SafeAreaView>  
-        );
+                </ScrollView>
+            </SafeAreaView>
+        )
     }
 }
 
@@ -85,24 +90,26 @@ const Style = StyleSheet.create({
      },
     logo: {
         fontWeight: 'bold',
-        fontSize: 40,
+        fontSize: 30,
         color: '#001F45',
-        //marginTop: 50,
+        marginTop: 40,
     },
     logoSub: {
         fontWeight: 'normal',
-        fontSize: 26,
+        fontSize: 20,
         color: '#001F45',
+        textAlign: 'center'
     },
     linearGradient: {
        borderRadius: 27,
        paddingVertical: 10,
        paddingHorizontal: 30,
-       width: 208,
+       width: 220,
     },
     buttonText: {
       fontFamily: 'Roboto-Relugar',
-      fontSize: 16,
+      fontSize: 18,
+      fontWeight: 'bold',
       color: '#fff',
       textAlign: 'center',
     },
