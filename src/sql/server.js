@@ -39,6 +39,20 @@ app.get('/users', (req, res) => {
     });
 });
 
+app.post('/users', (req, res) => {
+    var userData = {
+        Name: req.body.name,
+        Email: req.body.email,
+        Password: req.body.password
+    }
+    connection.query('INSERT INTO `user_data` (`Name`, `Email`, `Password`) VALUE ? ', userData, (err, result) => {
+        if (err) throw err;
+
+        req.send({
+            userData,
+        });
+    });
+});
 
 app.get('/comments', (req, res) => {
     connection.query('select * from comments', (error, results) => {

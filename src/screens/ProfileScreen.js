@@ -9,8 +9,28 @@ import { Text,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FastImage from 'react-native-fast-image';
+import axios from 'axios';
 
 export default class ProfileScreen extends PureComponent {
+
+    constructor(props) {
+      super(props);
+      this.state = {
+        userData: []
+      }
+    }
+
+    componentDidMount() {
+      axios.get('http://10.0.2.2:3000/users')
+      .then( (response ) => {
+        console.log(response.data)
+          this.setState({userData: response.data})
+      })
+      .catch( (error) => {
+          console.log(error)
+      })
+    }
+
     render() {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
@@ -23,8 +43,8 @@ export default class ProfileScreen extends PureComponent {
                         </View>
 
                         <View style={[styles.textStyle, {alignItems: 'center', marginBottom: 20}]}>
-                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>Đông Ngô </Text>
-                          <Text>dobeeteam@nbdong.com</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>{this.state.userData.Name}</Text>
+                          <Text>{this.state.userData.Email}</Text>
                         </View>
 
                         <TouchableOpacity 
