@@ -36,7 +36,7 @@ export default class LoginScreen extends PureComponent {
            console.log(response.data);
            if (response.data.status === 200 && response.data.data.data.error === false) {
                 alert(response.data.data.data.data.Email)
-                
+                this.props.navigation.navigate('DashBoard')
             
            } else {
                alert(response.data.data.data.message)
@@ -89,7 +89,7 @@ export default class LoginScreen extends PureComponent {
                       </View>
 
                       <TouchableOpacity 
-                         onPress = {() => this.props.navigation.navigate('DashBoard')}
+                         onPress = { this.handleButton() }
                          style={{alignItems: 'center'}}>
                           <LinearGradient 
                              start={{x: 0, y: 0}} 
