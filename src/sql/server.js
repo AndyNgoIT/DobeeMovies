@@ -43,7 +43,6 @@ app.post('/user/email', function (req, res) {
      if (error) throw error;
 
      if (user_email === results[0].Email) {
-         console.log(results)
          return res.send({ error: false, data: results[0], message: 'users list.' });
      } else {
          return res.send({ error: true, message: 'Email Not Found'})
