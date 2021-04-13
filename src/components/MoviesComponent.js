@@ -26,7 +26,7 @@ export default class MoviesComponent extends PureComponent {
     }
 
     renderItem(item) {
-        const {height,key, marginHorizontal, maxWidth, marginBottom, borderRadius, marginRight, pressItem, flexDirection } = this.props;
+        const {height, marginHorizontal, maxWidth, marginBottom, borderRadius, marginRight, pressItem, flexDirection } = this.props;
         return (
             <TouchableOpacity
                onPress = {() => pressItem()}

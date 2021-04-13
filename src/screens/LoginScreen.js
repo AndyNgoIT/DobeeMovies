@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { PureComponent } from 'react'
 import { 
     Text,
@@ -6,12 +7,30 @@ import {
     View,
     ScrollView,
     StyleSheet, 
-    TextInput
+    TextInput,
+    Alert
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 
 
 export default class LoginScreen extends PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+            name: ''
+        }
+    }
+
+    handleButton = () => {
+       axios({
+           method: 'post',
+           url: 'http://10.0.2.2:3000/user'
+       })
+    }
+
     render() {
         return (
             <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}} >
@@ -30,6 +49,8 @@ export default class LoginScreen extends PureComponent {
                         <TextInput 
                           placeholder="example@gmail.com"
                           keyboardType="email-address"
+                          onChangeText={email => this.setState({email})}
+                          value={this.state.email}
                           style={{ 
                             borderBottomColor: '#707070',
                             borderBottomWidth: 2,
@@ -42,6 +63,8 @@ export default class LoginScreen extends PureComponent {
                         <Text>Mật Khẩu</Text>
                         <TextInput 
                          placeholder="password"
+                         onChangeText={password => this.setState({password})}
+                         value={this.state.password}
                          secureTextEntry={true}
                          style={{ 
                            borderBottomColor: '#707070',
@@ -53,7 +76,10 @@ export default class LoginScreen extends PureComponent {
                       </View>
 
                       <TouchableOpacity 
-                         onPress = { () => this.props.navigation.navigate('DashBoard')}
+                         onPress = {() => this.props.navigation.navigate('DashBoard', {
+                             email: this.state.email,
+                             name: this.state.name
+                         })}
                          style={{alignItems: 'center'}}>
                           <LinearGradient 
                              start={{x: 0, y: 0}} 
@@ -65,10 +91,10 @@ export default class LoginScreen extends PureComponent {
                       </TouchableOpacity>
 
                       <View style={{alignContent: 'center', marginTop: 180, marginBottom: -30,}}>
-                           <Text style={{textAlign: 'center', alignItems: 'center'}}>
+                           <Text style={{textAlign: 'center', alignItems: 'center', fontSize: 15}}>
                                Bạn chưa có tài khoản?
                                <TouchableOpacity onPress={()=> this.props.navigation.navigate('RegisterScreen')}>
-                                 <Text style={{color: '#3391f5'}}> Đăng Ký Ngay</Text>
+                                 <Text style={{color: '#3391f5', fontSize: 15}}> Đăng Ký Ngay</Text>
                                 </TouchableOpacity>
                             </Text>
                         </View>
@@ -98,11 +124,11 @@ const Style = StyleSheet.create({
        borderRadius: 27,
        paddingVertical: 10,
        paddingHorizontal: 30,
-       width: 208,
+       width: 250,
     },
     buttonText: {
       fontFamily: 'Roboto-Relugar',
-      fontSize: 16,
+      fontSize: 18,
       color: '#fff',
       textAlign: 'center',
     },

@@ -1,80 +1,94 @@
+var express = require('express');
+ var app = express();
+ var bodyParser = require('body-parser');
+ var mysql = require('mysql');
 
-const express = require('express');
-const mysql = require('mysql');
-const bodyParser = require('body-parser');
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({
+     extended: true
+ }));
 
-const app = express();
+ // route mặc định
+ app.get('/', function (req, res) {
+     return res.send({ error: true, message: 'hello' })
+ });
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-    extended: true,
-}));
-
-const connection = mysql.createConnection({
-        host: '127.0.0.1',
-        user: 'root',
-        password: '',
-        database: 'dobeemovies'
+ 
+ var dbConn = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '',
+    database: 'dobeemovies'
 });
+// kết nối vào cơ sở dữ liệu
+dbConn.connect();
 
-const server = app.listen(3000, () => {
-    var host = server.address().address;
-    var port = server.address().port;
-    console.log('start');
-});
 
-connection.connect( (error) => {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log('connected');
-    }
-});
-
-app.get('/users', (req, res) => {
-    connection.query('select * from user_data', (error, results) => {
+// Truy xuất tất cả dữ liệu user
+app.get('/users', function (req, res) {
+    dbConn.query('SELECT * FROM user_data', function (error, results, fields) {
         if (error) throw error;
-
-        res.send(results);
+        return res.send({ error: false, data: results, message: 'users list.' });
     });
 });
 
-app.post('/users', (req, res) => {
-    var userData = {
-        Name: req.body.name,
-        Email: req.body.email,
-        Password: req.body.password
+// Truy xuất user với email
+// Gọi API bằng URL  http://127.0.0.1/user/1
+app.get('/user/:email', function (req, res) {
+    let user_email = req.boy.email;
+    if (!user_email) {
+     return res.status(400).send({ error: true, message: 'Please provide user_email' });
     }
-    connection.query('INSERT INTO `user_data` (`Name`, `Email`, `Password`) VALUE ? ', userData, (err, result) => {
-        if (err) throw err;
-
-        req.send({
-            userData,
-        });
+    dbConn.query('SELECT * FROM user_data where email=?', user_email, function (error, results, fields) {
+     if (error) throw error;
+      return res.send({ error: false, data: results[0], message: 'users list.' });
     });
 });
 
-app.get('/comments', (req, res) => {
-    connection.query('select * from comments', (error, results) => {
+// Thêm user mới
+// Gọi API bằng URL :  http://127.0.0.1:3000/add
+app.post('/user', function (req, res) {
+    let name = req.body.name;
+    let email = req.body.email;
+    let password = req.body.password;
+    if (!name && !email && !password) {
+      return res.status(400).send({ error:true, message: 'Please provide user' });
+    }
+   dbConn.query("INSERT INTO user_data SET ? ", { Name: name, Email: email, Password: password }, function (error, results, fields) {
+  if (error) throw error;
+    return res.send({ error: false, data: results, message: 'New user has been created successfully.' });
+    });
+});
+
+//  Cập nhật user với id
+// Gọi vào API với URL : http://127.0.0.1/user/{id}
+app.put('/user', function (req, res) {
+    let user_id = req.body.user_id;
+    let user = req.body.user;
+    if (!user_id || !user) {
+      return res.status(400).send({ error: user, message: 'Please provide user and user_id' });
+    }
+    dbConn.query("UPDATE user_data SET user = ? WHERE id = ?", [user, user_id], function (error, results, fields) {
+      if (error) throw error;
+      return res.send({ error: false, data: results, message: 'user has been updated successfully.' });
+     });
+});
+
+//  Xóa user
+app.delete('/user', function (req, res) {
+    let user_id = req.body.user_id;
+    if (!user_id) {
+        return res.status(400).send({ error: true, message: 'Please provide user_id' });
+    }
+    dbConn.query('DELETE FROM user_data WHERE id = ?', [user_id], function (error, results, fields) {
         if (error) throw error;
-
-        res.send(results);
+        return res.send({ error: false, data: results, message: 'User has been updated successfully.' });
     });
 });
 
-app.post('/comments', (req, res) => {
-    var data = {
-        Name: req.body.Name,
-        comment: req.body.comment
-    }
-    connection.query('INSERT INTO `comments`(`ID`, `Name`, `Email`, `comment`) VALUES ?', data, (err, results) => {
-        if (err) throw err;
-
-        res.send({
-            id: 3,
-            Name: req.body.Name,
-            comment: req.body.comment
-        });
-    });
+// chỉnh port
+app.listen(3000, function () {
+    console.log('Node app is running on port 3000');
 });
 
+module.exports = app;

@@ -17,43 +17,6 @@ import { HeaderComponent, MoviesComponent } from '../components';
 import axios from 'axios';
 
 export default class DetailScreen extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            commentsList: [],
-            commenting: ''
-        };
-    };
-
-    postData() {
-        try {
-            axios.post('http://10.0.2.2:3000/comments', {
-            Name: 'AndyNgoJs',
-            comment: this.state.commenting
-            })
-            .then( (response) => {
-                console.log(response)
-                alert('Đã bình luận thành công !')
-            })
-            .catch((error) => {
-                console.log(error)
-                alert('Bị lỗi rồi ! lêu lêu')
-            })
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-    componentDidMount() {
-        axios.get('http://10.0.2.2:3000/comments')
-        .then( (response) => {
-            this.setState({commentsList: response.data})
-        })
-        .catch( (error) => {
-            console.log(error)
-        })
-    };
-
     render() {
         let movie = this.props.navigation.state.params;
         return (
@@ -158,8 +121,6 @@ export default class DetailScreen extends PureComponent {
                                 <TextInput 
                                     placeholder= "Viết ở đây....."
                                     maxLength = {99999}
-                                    onChangeText={text => this.setState({commenting: text})}
-                                    value={this.state.commenting}
                                     style = {{
                                         paddingVertical: 8,
                                         borderColor: '#bbbfbf',
@@ -178,7 +139,6 @@ export default class DetailScreen extends PureComponent {
                                     borderRadius: 20,
                                     paddingVertical: 10,
                                     paddingHorizontal: 10}}
-                                    onPress={this.postData.bind(this)}
                                     >
                                     <Text style={{
                                         textAlign: 'center', 

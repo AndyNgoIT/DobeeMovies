@@ -22,17 +22,20 @@ export default class RegisterScreen extends PureComponent {
     }
 
     postDataUser() {
-        axios.post({
-            method: 'post',
-            url: 'http://10.0.2.2:3000/users',
-            data: {
-                name: this.state.name,
-                email: this.state.email,
-                password: this.state.password
-            },
-        })
-        
-        console.log(this.state.password)
+        try {
+            axios({
+                method: 'post',
+                url: 'http://10.0.2.2:3000/user',
+                data: {
+                    name: this.state.name,
+                    email: this.state.email,
+                    password: this.state.password
+                },
+            })
+            alert('Bạn đã đăng ký thành công !')
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     render() {
