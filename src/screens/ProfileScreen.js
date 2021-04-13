@@ -15,6 +15,22 @@ export default class ProfileScreen extends PureComponent {
 
     constructor(props) {
       super(props);
+      this.state = {
+        name: '',
+        email: ''
+      }
+    }
+
+    componentDidMount() {
+      axios.get('http://10.0.2.2:3000/users')
+      .then( res => {
+        let item = res.data.data.pop();
+        console.log(item)
+        this.setState({
+          name: item.Name,
+          email: item.Email,
+        })
+      })
     }
 
     render() {
@@ -30,8 +46,8 @@ export default class ProfileScreen extends PureComponent {
                         </View>
 
                         <View style={[styles.textStyle, {alignItems: 'center', marginBottom: 20}]}>
-                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>Đông Ngô</Text>
-                          <Text>m@nbdong.com</Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>{this.state.name}</Text>
+                          <Text>{this.state.email}</Text>
                         </View>
 
                         <TouchableOpacity 

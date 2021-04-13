@@ -23,26 +23,29 @@ export default class LoginScreen extends PureComponent {
         }
     }
 
-    handleButton = () => {
-       axios({
-           method: 'post',
-           url: 'http://10.0.2.2:3000/user/email',
-           data: {
-                email: this.state.email,
-                password: this.state.password
-            },
-       })
-       .then( (response) => {
-           console.log(response.data);
-           if (response.data.status === 200 && response.data.data.data.error === false) {
-                alert(response.data.data.data.data.Email)
-                this.props.navigation.navigate('DashBoard')
-            
-           } else {
-               alert(response.data.data.data.message)
-           } 
-       })
-    }
+    /*
+     * handleButton = () => {
+     *    axios({
+     *        method: 'post',
+     *        url: 'http://10.0.2.2:3000/user/email',
+     *        data: {
+     *             email: this.state.email,
+     *             password: this.state.password
+     *         },
+     *    })
+     *    .then((response) => {
+     *        console.log(response.data);
+     *        if (response.data.status === 200 && response.data.data.data.error === false) {
+
+     *        } else {
+     *            alert(response.data.data.data.message)
+     *        } 
+     *    })
+     *    .catch(err => {
+     *        alert(err)
+     *    })
+     *}
+     */
 
     render() {
         return (
@@ -89,7 +92,7 @@ export default class LoginScreen extends PureComponent {
                       </View>
 
                       <TouchableOpacity 
-                         onPress = { this.handleButton() }
+                         onPress = { () => this.props.navigation.navigate('DashBoard') }
                          style={{alignItems: 'center'}}>
                           <LinearGradient 
                              start={{x: 0, y: 0}} 
