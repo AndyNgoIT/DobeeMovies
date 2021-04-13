@@ -15,14 +15,10 @@ export default class ProfileScreen extends PureComponent {
 
     constructor(props) {
       super(props);
-      this.state = {
-        userData: [],
-        email: '',
-        name: ''
-      }
     }
 
     render() {
+        let email = this.props.navigation.state.params;
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                <ScrollView contentContainerStyle = {{flexGrow: 1}}>
@@ -34,8 +30,8 @@ export default class ProfileScreen extends PureComponent {
                         </View>
 
                         <View style={[styles.textStyle, {alignItems: 'center', marginBottom: 20}]}>
-                          <Text style={{fontWeight: 'bold', fontSize: 25,}}></Text>
-                          <Text></Text>
+                          <Text style={{fontWeight: 'bold', fontSize: 25,}}>Đông Ngô</Text>
+                          <Text>m@nbdong.com</Text>
                         </View>
 
                         <TouchableOpacity 

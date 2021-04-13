@@ -34,14 +34,21 @@ app.get('/users', function (req, res) {
 
 // Truy xuất user với email
 // Gọi API bằng URL  http://127.0.0.1/user/1
-app.get('/user/:email', function (req, res) {
-    let user_email = req.boy.email;
+app.post('/user/email', function (req, res) {
+    let user_email = req.body.email;
     if (!user_email) {
      return res.status(400).send({ error: true, message: 'Please provide user_email' });
     }
-    dbConn.query('SELECT * FROM user_data where email=?', user_email, function (error, results, fields) {
+    dbConn.query('SELECT * FROM user_data where Email = ? ', user_email, function (error, results, fields) {
      if (error) throw error;
-      return res.send({ error: false, data: results[0], message: 'users list.' });
+
+     if (user_email === results[0].Email) {
+         console.log(results)
+         return res.send({ error: false, data: results[0], message: 'users list.' });
+     } else {
+         return res.send({ error: true, message: 'Email Not Found'})
+     }
+        
     });
 });
 

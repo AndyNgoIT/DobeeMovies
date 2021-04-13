@@ -14,7 +14,6 @@ import FastImage from 'react-native-fast-image';
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import LinearGradient from 'react-native-linear-gradient';
 import { HeaderComponent, MoviesComponent } from '../components';
-import axios from 'axios';
 
 export default class DetailScreen extends PureComponent {
     render() {
@@ -149,20 +148,6 @@ export default class DetailScreen extends PureComponent {
                                         }}>Bình Luận</Text>
                                 </TouchableOpacity>
                             </View>
-                            <FlatList 
-                                data={this.state.commentsList}
-                                keyExtractor={ (item, index) => index.toString()}
-                                renderItem= {({item}) => 
-                                    <View style={{backgroundColor: '#ccc', 
-                                                    borderRadius: 20, 
-                                                    marginVertical: 13, 
-                                                    padding: 16}}>
-                                        <Text style={{fontSize: 15, fontWeight: 'bold'}}>{item.Name}</Text>
-                                        <Text>{item.comment}</Text>
-
-                                    </View>
-                                }
-                            />
                         </View>
                     </View>
 
