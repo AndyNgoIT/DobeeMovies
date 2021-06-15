@@ -10,16 +10,31 @@
     "lint": "eslint ."
   },
   "dependencies": {
+<<<<<<< HEAD
     "jetifier": "^1.6.6",
+=======
+    "@react-native-community/masked-view": "^0.1.10",
+    "axios": "^0.21.1",
+    "lodash": "^4.17.20",
+>>>>>>> 03d0fdbd2954e950166b71f89c6c4aa7a1030464
     "react": "16.13.1",
     "react-native": "0.63.4",
+    "react-native-fast-image": "^8.3.4",
     "react-native-gesture-handler": "^1.9.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-reanimated": "^1.13.2",
     "react-native-safe-area-context": "^3.1.9",
     "react-native-screens": "^2.16.1",
+<<<<<<< HEAD
     "react-native-vector-icons": "^7.1.0",
     "react-navigation": "^4.4.3",
+=======
+    "react-native-vector-icons": "^8.0.0",
+    "react-native-video": "^5.1.1",
+    "react-navigation": "^4.4.3",
+    "react-navigation-stack": "^2.10.2",
+    "react-navigation-tabs": "^2.10.1",
+>>>>>>> 03d0fdbd2954e950166b71f89c6c4aa7a1030464
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "redux-actions": "^2.6.5",
@@ -34,6 +49,7 @@
     "babel-jest": "^25.1.0",
     "eslint": "^6.5.1",
     "jest": "^25.1.0",
+    "jetifier": "^1.6.6",
     "metro-react-native-babel-preset": "^0.59.0",
     "react-test-renderer": "16.13.1"
   },
