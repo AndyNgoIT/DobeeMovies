@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import axios from 'axios';
+import React, { PureComponent } from 'react'
 import { 
     Text,
     SafeAreaView, 
@@ -6,12 +7,46 @@ import {
     View,
     ScrollView,
     StyleSheet, 
-    TextInput
+    TextInput,
+    Alert
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 
 
-export default class LoginScreen extends Component {
+export default class LoginScreen extends PureComponent {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            email: '',
+            password: '',
+        }
+    }
+
+    /*
+     * handleButton = () => {
+     *    axios({
+     *        method: 'post',
+     *        url: 'http://10.0.2.2:3000/user/email',
+     *        data: {
+     *             email: this.state.email,
+     *             password: this.state.password
+     *         },
+     *    })
+     *    .then((response) => {
+     *        console.log(response.data);
+     *        if (response.data.status === 200 && response.data.data.data.error === false) {
+
+     *        } else {
+     *            alert(response.data.data.data.message)
+     *        } 
+     *    })
+     *    .catch(err => {
+     *        alert(err)
+     *    })
+     *}
+     */
+
     render() {
         return (
             <SafeAreaView style= {{flex: 1, backgroundColor: '#fff'}} >
@@ -30,6 +65,8 @@ export default class LoginScreen extends Component {
                         <TextInput 
                           placeholder="example@gmail.com"
                           keyboardType="email-address"
+                          onChangeText={email => this.setState({email})}
+                          value={this.state.email}
                           style={{ 
                             borderBottomColor: '#707070',
                             borderBottomWidth: 2,
@@ -42,6 +79,8 @@ export default class LoginScreen extends Component {
                         <Text>Mật Khẩu</Text>
                         <TextInput 
                          placeholder="password"
+                         onChangeText={password => this.setState({password})}
+                         value={this.state.password}
                          secureTextEntry={true}
                          style={{ 
                            borderBottomColor: '#707070',
@@ -53,7 +92,7 @@ export default class LoginScreen extends Component {
                       </View>
 
                       <TouchableOpacity 
-                         onPress = { () => this.props.navigation.navigate('DashBoard')}
+                         onPress = { () => this.props.navigation.navigate('DashBoard') }
                          style={{alignItems: 'center'}}>
                           <LinearGradient 
                              start={{x: 0, y: 0}} 
@@ -65,10 +104,10 @@ export default class LoginScreen extends Component {
                       </TouchableOpacity>
 
                       <View style={{alignContent: 'center', marginTop: 180, marginBottom: -30,}}>
-                           <Text style={{textAlign: 'center', alignItems: 'center'}}>
+                           <Text style={{textAlign: 'center', alignItems: 'center', fontSize: 15}}>
                                Bạn chưa có tài khoản?
-                               <TouchableOpacity>
-                                 <Text style={{color: '#3391f5'}}> Đăng Ký Ngay</Text>
+                               <TouchableOpacity onPress={()=> this.props.navigation.navigate('RegisterScreen')}>
+                                 <Text style={{color: '#3391f5', fontSize: 15}}> Đăng Ký Ngay</Text>
                                 </TouchableOpacity>
                             </Text>
                         </View>
@@ -98,11 +137,11 @@ const Style = StyleSheet.create({
        borderRadius: 27,
        paddingVertical: 10,
        paddingHorizontal: 30,
-       width: 208,
+       width: 250,
     },
     buttonText: {
       fontFamily: 'Roboto-Relugar',
-      fontSize: 16,
+      fontSize: 18,
       color: '#fff',
       textAlign: 'center',
     },

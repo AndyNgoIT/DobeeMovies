@@ -9,6 +9,9 @@ import LoginScreen from './screens/LoginScreen';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import InforappScreen from './screens/InforappScreen';
+import PlaylistItem from './screens/PlaylistItem';
+import Movies from './screens/Movies';
+import RegisterScreen from './screens/RegisterScreen';
 
 const HomeStack = createStackNavigator(
     {
@@ -38,6 +41,35 @@ const AuthorStack = createStackNavigator(
     },
 );
 
+const PlaylistStack = createStackNavigator(
+    {
+        PlaylistScreen: PlaylistScreen,
+        PlaylistItem: PlaylistItem,
+        Movies: Movies,
+    },
+    {
+        defaultNavigationOptions: {
+            headerShown: true,
+            headerTitle: false, 
+            headerTransparent: true,
+         },  
+    },
+);
+
+const RegisterStack = createStackNavigator(
+    {
+        LoginScreen: LoginScreen,
+        RegisterScreen: RegisterScreen,
+    },
+    {
+        defaultNavigationOptions: {
+            headerShown: true,
+            headerTitle: false, 
+            headerTransparent: true,
+         },  
+    }
+);
+
 const BottomNav = createBottomTabNavigator({
      HomeStack: {
          screen: HomeStack,
@@ -46,7 +78,7 @@ const BottomNav = createBottomTabNavigator({
          }
      },
      Playlist: {
-        screen: PlaylistScreen,
+        screen: PlaylistStack,
         navigationOptions: {
             tabBarLabel: 'Danh Sách Phát',
         }
@@ -96,9 +128,12 @@ const BottomNav = createBottomTabNavigator({
 );
 
 const SwitchNav = createSwitchNavigator({
+    LoginScreen: RegisterStack,
+    RegisterScreen: RegisterStack,
     DashBoard: BottomNav,
-    LoginScreen: LoginScreen,
-    InforappScreen: AuthorStack
+    InforappScreen: AuthorStack,
+    DetailsPlaylist: PlaylistStack,
+    Movies: PlaylistStack,
 })
 
 const MainContainer = createAppContainer(SwitchNav);

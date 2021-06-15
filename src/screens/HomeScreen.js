@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View, 
@@ -13,14 +13,19 @@ import FastImage from 'react-native-fast-image';
 import moviesData from "../assets/data.json";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 
-export default class HomeScreen extends Component {
+export default class HomeScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{backgroundColor: '#fff', flex: 1}}>
                 <ScrollView>  
-                  <HeaderComponent/>
+                  <HeaderComponent 
+                    title = {'Trang Chính'} 
+                    fontWeight={'bold'} 
+                    fontSize={28} 
+                    color={'#001f45'}  />
+
                   <View>
-                      <FlatList   
+                    <FlatList   
                         horizontal = {true} 
                         style={{marginLeft: 21}}
                         data={moviesData.results}
@@ -29,7 +34,7 @@ export default class HomeScreen extends Component {
                             return (
                                <TouchableOpacity 
                                   onPress = {() => this.props.navigation.navigate('DetailScreen', item)}
-                                  style={{marginRight: 18}}>
+                                  style={{marginRight: 15}}>
                                    <View style={{flex: 1,}}>
                                        <FastImage 
                                         source={{
@@ -43,11 +48,12 @@ export default class HomeScreen extends Component {
                                             resizeMode= 'cover'
                                             />
                                        <Text style={{
-                                           fontSize: 12, 
+                                           fontSize: 15,
+                                           maxWidth: 165, 
                                            fontFamily: 'san-serif', 
                                            fontWeight: 'bold',
                                            marginTop: 10,
-                                           }}>{item.title || item.name}</Text>
+                                           }}>{item.title}</Text>
                         
                                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                                            <Text style={{color: '#FFA44D', fontSize: 12}}>{item.vote_average}/10</Text>
@@ -57,7 +63,7 @@ export default class HomeScreen extends Component {
                                </TouchableOpacity>
                             );
                         }}
-                      />
+                    /> 
                     </View>
                     
                     <View style={{flex: 1, marginHorizontal: 21}}>
@@ -66,7 +72,7 @@ export default class HomeScreen extends Component {
                             fontFamily: 'san-serif', 
                             color: '#001F45',
                             fontWeight: 'bold',
-                            fontSize: 20,
+                            fontSize: 24,
                             }}>Thịnh Hành</Text>
                         <FlatList   
                          data={moviesData.results}
@@ -94,12 +100,12 @@ export default class HomeScreen extends Component {
                                            fontSize: 14, 
                                            fontFamily: 'san-serif', 
                                            fontWeight: 'bold',
-                                           }}>{item.title || item.name}</Text>
+                                           }}>{item.title}</Text>
                                            
                                          <Text style={{
                                            fontSize: 12,  
                                            fontWeight: 'bold',
-                                           marginVertical: 8,
+                                           marginVertical: 5,
                                            }}>Ngày sản xuất: {item.release_date || item.first_air_date}</Text>
 
                                          <Text numberOfLines={2} style={{
@@ -112,7 +118,7 @@ export default class HomeScreen extends Component {
                                     </View> 
                                </TouchableOpacity>
                             );
-                        }} />
+                        }} /> 
                     </View>  
                 </ScrollView>    
             </SafeAreaView>

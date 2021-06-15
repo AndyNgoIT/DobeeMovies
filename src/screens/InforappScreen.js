@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { 
     Text, 
     View,
@@ -8,30 +8,27 @@ import {
 import FastImage from 'react-native-fast-image';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
+import { HeaderComponent } from '../components';
 
-
-export default class InforappScreen extends Component {
+export default class InforappScreen extends PureComponent {
     render() {
         return (
             <SafeAreaView style={{color: '#ebeef0'}}>
-                <View style={{paddingVertical: 12, marginLeft: 21, }}>
-                    <Text style={{
-                        fontWeight: 'bold', 
-                        fontSize: 24, 
-                        color: '#001f45',
-                        textAlign: 'center',
-                        }}>Thông tin về Ứng dụng</Text>
-                </View>
+                <HeaderComponent title={'Thông tin về Ứng dụng'}
+                    fontWeight= {'bold'}
+                    fontSize={24}
+                    color={'#001f45'}
+                    textAlign={'center'} />
 
                 <View style = {{marginTop: 15, marginHorizontal: 21,}}>
                     <Text style={{color: '#7f7f7f'}}>Tác giả</Text>
 
                     <View style={{alignItems: 'center', marginTop: 30,}}>
                        <FastImage 
-                         source = { require('../assets/images/avatar.webp') }
-                         style = {{ width: 120, height: 120, borderRadius: 60}} />
+                         source = { require('../assets/images/dong.webp') }
+                         style = {{ width: 150, height: 150, borderRadius: 70}} />
                        <Text  style={{
-                           fontSize: 20, 
+                           fontSize: 23, 
                            fontFamily: 'san-serif', 
                            color: '#001f45',
                            fontWeight: 'bold',
@@ -39,7 +36,7 @@ export default class InforappScreen extends Component {
                            marginTop: 10,
                            }} >A.D Đông Ngô
                             <FastImage  source={ require('../assets/images/tich-xanh.webp')} 
-                                style={{width: 18, height: 18, marginLeft: 16,}} />
+                                style={{width: 18, height: 18,}} />
                        </Text>
                        <Text  style={{fontSize: 15, fontFamily: 'san-serif', color: '#001f45'}} >@AndyNgoJs</Text>
                     </View>
@@ -55,7 +52,7 @@ export default class InforappScreen extends Component {
                              fontSize: 14, 
                              fontFamily: 'san-serif', 
                              color: '#001f45'
-                             }} >Ứng dụng này là một sản phẩm nhỏ của tớ muốn hướng tới mục đích cộng đồng. Tuy nhiên, trong quá trình phát triển do thiếu hụt về đầu tư và kinh phí, ứng dụng có thể còn nhiều vấn đề. Đương nhiên mình vẫn đang cố khắc phục để mang lại một trải nghiệm tốt nhất cho mọi người. </Text>
+                             }} >Ứng dụng này là một sản phẩm nhỏ của mình muốn hướng tới mục đích cộng đồng. Tuy nhiên, trong quá trình phát triển do thiếu hụt về đầu tư và kinh phí, ứng dụng có thể còn nhiều vấn đề. Đương nhiên mình vẫn đang cố khắc phục để mang lại một trải nghiệm tốt nhất cho mọi người. </Text>
 
                         <Text style={{fontSize: 14, color: '#001f45', marginTop: 5, }}>
                             Cảm ơn bạn vì đã sử dụng ứng dụng này!
@@ -68,7 +65,7 @@ export default class InforappScreen extends Component {
                         color: '#001f45',
                         marginTop: 30,
                         marginHorizontal: 10,
-                        }} >VERSION: 1.0.0</Text>
+                        }} >VERSION: 0.0.1</Text>
                 </View>
             </SafeAreaView>
         )

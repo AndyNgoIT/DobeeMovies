@@ -3,11 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "android": "npx react-native run-android",
+    "ios": "npx react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "serve": "nodemon ./src/sql/server.js"
   },
   "dependencies": {
 <<<<<<< HEAD
@@ -15,8 +16,16 @@
 =======
     "@react-native-community/masked-view": "^0.1.10",
     "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "events": "^3.3.0",
+    "express": "^4.17.1",
     "lodash": "^4.17.20",
+<<<<<<< HEAD
 >>>>>>> 03d0fdbd2954e950166b71f89c6c4aa7a1030464
+=======
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.7",
+>>>>>>> DobeeMovies-31-01-21
     "react": "16.13.1",
     "react-native": "0.63.4",
     "react-native-fast-image": "^8.3.4",
@@ -40,7 +49,9 @@
     "redux-actions": "^2.6.5",
     "redux-logger": "^3.0.6",
     "redux-persist": "^6.0.0",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "stream": "^0.0.2",
+    "timers": "^0.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",
